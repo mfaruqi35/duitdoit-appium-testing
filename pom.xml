@@ -18,29 +18,20 @@
     <maven.compiler.target>21</maven.compiler.target>
   </properties>
 
-  <dependencies>
-    <!-- Source: https://mvnrepository.com/artifact/io.appium/java-client -->
+<dependencies>
     <dependency>
-      <groupId>io.appium</groupId>
-      <artifactId>java-client</artifactId>
-      <version>9.4.0</version>
-      <scope>compile</scope>
-  </dependency>
-  <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>4.28.1</version>
-      <scope>compile</scope>
+        <groupId>io.appium</groupId>
+        <artifactId>java-client</artifactId>
+        <version>10.1.1</version>
+        <scope>compile</scope>
     </dependency>
-    <!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
-  <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>7.10.2</version>
-      <scope>test</scope>
-  </dependency>
-  </dependencies>
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.10.2</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

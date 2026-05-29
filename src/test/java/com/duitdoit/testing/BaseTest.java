@@ -20,7 +20,7 @@ public class BaseTest {
         options.setDeviceName("emulator-5554");
         options.setAvd("Pixel_9");
         options.setApp("/home/arsene/Documents/learnfrm0/bigbrain-project/app-debug.apk");
-        options.setAppActivity(".MainActivty");
+        options.setAppActivity(".MainActivity");
         options.setNoReset(true);
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
