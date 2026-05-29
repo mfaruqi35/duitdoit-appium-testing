@@ -31,19 +31,21 @@ public class AccountTest extends BaseTest {
 
     @Test
     public void testDeleteAccount() throws InterruptedException {
-        driver.findElement(AppiumBy.id("nav_accounts")).click();
-        Thread.sleep(1000);
+        waitForElement("nav_accounts").click();
 
-        driver.findElement(AppiumBy.id("btn_add_account")).click();
-        Thread.sleep(1000);
+        waitForElement("btn_add_account").click();
 
-        driver.findElement(AppiumBy.id("field_account_name")).sendKeys("Delete Test");
-        driver.findElement(AppiumBy.id("field_account_balance")).sendKeys("50000");
-        driver.findElement(AppiumBy.id("btn_save_account")).click();
-        Thread.sleep(1000);
+        waitForElement("field_account_name")
+                .sendKeys("DeleteTest");
 
-        driver.findElement(AppiumBy.id("btn_delete_account_Delete Test")).click();
-        Thread.sleep(500);
+        waitForElement("field_account_balance")
+                .sendKeys("50000");
+
+        waitForElement("btn_icon_ic_wallet").click();
+
+        waitForElement("btn_save_account").click();
+
+        waitForElement("btn_delete_account_DeleteTest").click();
 
         driver.findElement(AppiumBy.id("btn_confirm_delete_account")).click();
         Thread.sleep(1000);

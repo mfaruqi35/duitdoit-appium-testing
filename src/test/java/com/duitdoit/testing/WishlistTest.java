@@ -8,29 +8,27 @@ import org.testng.annotations.Test;
 public class WishlistTest extends BaseTest {
 
     private void navigateToWishlist() throws InterruptedException {
-        driver.findElement(AppiumBy.id("nav_extras")).click();
-        Thread.sleep(1000);
-        driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text='See all']")).click();
-        Thread.sleep(1000);
+        waitForElement("nav_extras").click();
+        waitForElement("btn_see_all_wishlist").click();
     }
 
     @Test
     public void testCreateWishlist() throws InterruptedException {
         navigateToWishlist();
 
-        driver.findElement(AppiumBy.id("btn_add_wishlist")).click();
-        Thread.sleep(1000);
+        waitForElement("btn_add_wishlist").click();
 
-        driver.findElement(AppiumBy.id("field_wishlist_name")).sendKeys("Test Item");
-        driver.findElement(AppiumBy.id("field_wishlist_price")).sendKeys("500000");
+        waitForElement("field_wishlist_name")
+                .sendKeys("Test Item");
 
-        driver.findElement(AppiumBy.id("chip_priority_high")).click();
-        Thread.sleep(500);
+        waitForElement("field_wishlist_price")
+                .sendKeys("500000");
 
-        driver.findElement(AppiumBy.id("btn_save_wishlist")).click();
-        Thread.sleep(1000);
+        waitForElement("chip_priority_high").click();
 
-        WebElement item = driver.findElement(AppiumBy.id("wishlist_item_Test Item"));
+        waitForElement("btn_save_wishlist").click();
+
+        WebElement item = waitForElement("wishlist_item_Test Item");
         Assert.assertNotNull(item, "Wishlist item should be created");
     }
 
@@ -38,19 +36,21 @@ public class WishlistTest extends BaseTest {
     public void testDeleteWishlist() throws InterruptedException {
         navigateToWishlist();
 
-        driver.findElement(AppiumBy.id("btn_add_wishlist")).click();
-        Thread.sleep(1000);
+        waitForElement("btn_add_wishlist").click();
 
-        driver.findElement(AppiumBy.id("field_wishlist_name")).sendKeys("Delete Item");
-        driver.findElement(AppiumBy.id("field_wishlist_price")).sendKeys("100000");
-        driver.findElement(AppiumBy.id("chip_priority_low")).click();
-        driver.findElement(AppiumBy.id("btn_save_wishlist")).click();
-        Thread.sleep(1000);
+        waitForElement("field_wishlist_name")
+                .sendKeys("Delete Test");
 
-        driver.findElement(AppiumBy.id("btn_delete_wishlist_Delete Item")).click();
-        Thread.sleep(1000);
+        waitForElement("field_wishlist_price")
+                .sendKeys("100000");
 
-        boolean isGone = driver.findElements(AppiumBy.id("wishlist_item_Delete Item")).isEmpty();
+        waitForElement("chip_priority_low").click();
+
+        waitForElement("btn_save_wishlist").click();
+
+        waitForElement("btn_delete_wishlist_Delete Test").click();
+
+        boolean isGone = driver.findElements(AppiumBy.id("wishlist_item_Delete Test")).isEmpty();
         Assert.assertTrue(isGone, "Wishlist item should be deleted");
     }
 }

@@ -8,29 +8,26 @@ import org.testng.annotations.Test;
 public class RegularPaymentTest extends BaseTest {
 
     private void navigateToRegularPayment() throws InterruptedException {
-        driver.findElement(AppiumBy.id("nav_extras")).click();
-        Thread.sleep(1000);
-        driver.findElements(AppiumBy.xpath("//android.widget.TextView[@text='See all']")).get(0).click();
-        Thread.sleep(1000);
+        waitForElement("nav_extras").click();
+
+        waitForElement("btn_see_all_regular_payment").click();
     }
 
     @Test
     public void testCreateRegularPayment() throws InterruptedException {
         navigateToRegularPayment();
 
-        driver.findElement(AppiumBy.id("btn_add_regular_payment")).click();
-        Thread.sleep(1000);
+        waitForElement("btn_add_regular_payment").click();
 
-        driver.findElement(AppiumBy.id("field_regular_payment_name")).sendKeys("Netflix");
-        driver.findElement(AppiumBy.id("field_regular_payment_amount")).sendKeys("54000");
+        waitForElement("field_regular_payment_name").sendKeys("Netflix");
 
-        driver.findElement(AppiumBy.id("chip_billing_cycle_monthly")).click();
-        Thread.sleep(500);
+        waitForElement("field_regular_payment_amount").sendKeys("54000");
 
-        driver.findElement(AppiumBy.id("btn_save_regular_payment")).click();
-        Thread.sleep(1000);
+        waitForElement("chip_billing_cycle_monthly").click();
 
-        WebElement item = driver.findElement(AppiumBy.id("regular_payment_item_Netflix"));
+        waitForElement("btn_save_regular_payment").click();
+
+        WebElement item = waitForElement("regular_payment_item_Netflix");
         Assert.assertNotNull(item, "Regular payment should be created");
     }
 
@@ -38,17 +35,17 @@ public class RegularPaymentTest extends BaseTest {
     public void testDeleteRegularPayment() throws InterruptedException {
         navigateToRegularPayment();
 
-        driver.findElement(AppiumBy.id("btn_add_regular_payment")).click();
-        Thread.sleep(1000);
+        waitForElement("btn_add_regular_payment").click();
 
-        driver.findElement(AppiumBy.id("field_regular_payment_name")).sendKeys("Spotify");
-        driver.findElement(AppiumBy.id("field_regular_payment_amount")).sendKeys("29000");
-        driver.findElement(AppiumBy.id("chip_billing_cycle_monthly")).click();
-        driver.findElement(AppiumBy.id("btn_save_regular_payment")).click();
-        Thread.sleep(1000);
+        waitForElement("field_regular_payment_name").sendKeys("Spotify");
 
-        driver.findElement(AppiumBy.id("btn_delete_regular_payment_Spotify")).click();
-        Thread.sleep(1000);
+        waitForElement("field_regular_payment_amount").sendKeys("29000");
+
+        waitForElement("chip_billing_cycle_monthly").click();
+
+        waitForElement("btn_save_regular_payment").click();
+
+        waitForElement("btn_delete_regular_payment_Spotify").click();
 
         boolean isGone = driver.findElements(AppiumBy.id("regular_payment_item_Spotify")).isEmpty();
         Assert.assertTrue(isGone, "Regular payment should be deleted");
