@@ -50,7 +50,7 @@ public class WishlistTest extends BaseTest {
 
         waitForElement("btn_delete_wishlist_Delete Test").click();
 
-        boolean isGone = driver.findElements(AppiumBy.id("wishlist_item_Delete Test")).isEmpty();
+        boolean isGone = driver.findElements(AppiumBy.xpath("//*[@resource-id='wishlist_item_Delete Test']")).isEmpty();
         Assert.assertTrue(isGone, "Wishlist item should be deleted");
     }
 }

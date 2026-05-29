@@ -47,7 +47,8 @@ public class RegularPaymentTest extends BaseTest {
 
         waitForElement("btn_delete_regular_payment_Spotify").click();
 
-        boolean isGone = driver.findElements(AppiumBy.id("regular_payment_item_Spotify")).isEmpty();
+        boolean isGone = driver.findElements(AppiumBy.xpath("//*[@resource-id='regular_payment_item_Delete Test']"))
+                .isEmpty();
         Assert.assertTrue(isGone, "Regular payment should be deleted");
     }
 }
