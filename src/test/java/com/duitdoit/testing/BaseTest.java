@@ -1,5 +1,6 @@
 package com.duitdoit.testing;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 
@@ -23,6 +24,12 @@ public class BaseTest {
         return wait.until(
                 ExpectedConditions.presenceOfElementLocated(
                         By.xpath("//*[@resource-id='" + resourceId + "']")));
+    }
+
+    public WebElement scrollToElement(String resourceId) {
+        return driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(\""
+                        + resourceId + "\"))"));
     }
 
     @BeforeClass
