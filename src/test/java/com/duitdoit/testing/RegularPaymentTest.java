@@ -10,7 +10,7 @@ public class RegularPaymentTest extends BaseTest {
     private void navigateToRegularPayment() throws InterruptedException {
         waitForElement("nav_extras").click();
 
-        waitForElement("btn_see_all_regular_payment").click();
+        waitForAccessibilityId("btn_see_all_regular_payment").click();
     }
 
     @Test
@@ -33,7 +33,7 @@ public class RegularPaymentTest extends BaseTest {
 
     @Test
     public void testDeleteRegularPayment() throws InterruptedException {
-        navigateToRegularPayment();
+        // navigateToRegularPayment();
 
         waitForElement("btn_add_regular_payment").click();
 

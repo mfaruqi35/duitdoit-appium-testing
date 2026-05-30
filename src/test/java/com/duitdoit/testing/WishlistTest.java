@@ -9,7 +9,7 @@ public class WishlistTest extends BaseTest {
 
     private void navigateToWishlist() throws InterruptedException {
         waitForElement("nav_extras").click();
-        waitForElement("btn_see_all_wishlist").click();
+        waitForAccessibilityId("btn_see_all_wishlist").click();
     }
 
     @Test
@@ -34,7 +34,7 @@ public class WishlistTest extends BaseTest {
 
     @Test
     public void testDeleteWishlist() throws InterruptedException {
-        navigateToWishlist();
+        // navigateToWishlist();
 
         waitForElement("btn_add_wishlist").click();
 

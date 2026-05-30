@@ -26,6 +26,14 @@ public class BaseTest {
                         By.xpath("//*[@resource-id='" + resourceId + "']")));
     }
 
+    public WebElement waitForAccessibilityId(String id) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        return wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        AppiumBy.accessibilityId(id)));
+    }
+
     public WebElement scrollToElement(String resourceId) {
         return driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(\""
