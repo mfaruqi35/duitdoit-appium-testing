@@ -3,9 +3,15 @@ package com.duitdoit.testing;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 public class TransactionTest extends BaseTest {
+    @AfterMethod
+    public void resetApp() {
+        driver.terminateApp("com.bigbrain.duitdoit");
+        driver.activateApp("com.bigbrain.duitdoit");
+    }
 
     private void createAccount(String name, String balance) throws InterruptedException {
 

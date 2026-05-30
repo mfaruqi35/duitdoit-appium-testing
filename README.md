@@ -2,7 +2,7 @@
 
 **Project:** DoitDuit Android App  
 **Version:** 1.0  
-**Prepared by:** -  
+**Prepared by:** Muhammad Faruqi
 **Date:** May 2026
 
 ---
