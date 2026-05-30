@@ -64,7 +64,7 @@ public class TransactionTest extends BaseTest {
 
         waitForElement("chip_category_Food").click();
 
-        waitForElement("field_note").sendKeys("Test Expense");
+        scrollToElement("field_note").sendKeys("Test Expense");
 
         scrollToElement("btn_save_transactions").click();
 
@@ -77,16 +77,26 @@ public class TransactionTest extends BaseTest {
 
         waitForElement("nav_add_transaction").click();
 
-        waitForElement("chip_type_expense").click();
+        // waitForElement("chip_type_expense").click();
 
         waitForElement("field_amount").sendKeys("999999");
+        driver.hideKeyboard();
 
         waitForElement("dropdown_account").click();
         driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text='Poor Wallet']")).click();
 
+        waitForElement("chip_type_expense").click();
+
         waitForElement("chip_category_Food").click();
 
-        scrollToElement("btn_save_transactions").click();
+        scrollToElement("btn_save_transactions");
+
+        Thread.sleep(500);
+
+        waitForElement("btn_save_transactions").click();
+
+        scrollToTop();
+        Thread.sleep(500);
 
         WebElement error = driver
                 .findElement(AppiumBy.xpath("//android.widget.TextView[@text='Insufficient balance']"));
@@ -120,7 +130,9 @@ public class TransactionTest extends BaseTest {
 
         waitForElement("field_amount").sendKeys("200000");
 
-        scrollToElement("btn_save_transactions").click();
+        waitForElement("chip_category_Freelance").click();
+
+        scrollToElement("btn_save_changes").click();
 
         Assert.assertTrue(true, "Transaction edited successfully");
     }

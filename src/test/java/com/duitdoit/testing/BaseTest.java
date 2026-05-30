@@ -32,13 +32,21 @@ public class BaseTest {
                         + resourceId + "\"))"));
     }
 
+    public void scrollToTop() {
+        try {
+            driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollToBeginning(5)"));
+        } catch (Exception e) {
+        }
+    }
+
     @BeforeClass
     public void setUp() throws MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options();
         options.setPlatformName("Android");
         options.setAutomationName("UiAutomator2");
         options.setDeviceName("emulator-5554");
-        options.setAvd("Pixel_9");
+        options.setAvd("Pixel_8");
         options.setApp("/home/arsene/Documents/semester-6/kpl/UAS/app-debug.apk");
         options.setAppActivity(".MainActivity");
         // options.setNoReset(true);
