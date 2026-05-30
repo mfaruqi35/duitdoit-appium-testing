@@ -55,7 +55,7 @@ public class BaseTest {
         options.setAutomationName("UiAutomator2");
         options.setDeviceName("emulator-5554");
         options.setAvd("Pixel_8");
-        options.setApp("/home/arsene/Documents/semester-6/kpl/UAS/app-debug.apk");
+        options.setApp("/home/arsene/Documents/semester-6/kpl/UAS/DuitDoIt-debug.apk");
         options.setAppActivity(".MainActivity");
         // options.setNoReset(true);
 
